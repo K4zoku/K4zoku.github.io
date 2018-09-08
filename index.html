@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" type="image/png" href="https://i.imgur.com/KQtnGpG.png">
+    <title>Unicode ⇔ JavaEntities Converter</title>
+    <meta name="google-site-verification" content="W3Tu3bPyrpKmCgKKxlnt5MgP7BdU5RrZNzvhAJlq1uQ" />
+    <link rel="stylesheet" href="TS.Bootstrap.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="convert.js"></script>
+  </head>
+
+  <body>
+    <script>
+      $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+      });
+    </script>
+
+    <div class="row">
+      <div class="col-xs-9">
+        <div id="main" class="panel panel-dark">
+          <div class="panel-heading"><p class="panel-title">Unicode ⇔ JavaEntites Converter</p></div>
+          <div class="panel-body">
+            <form name="conversion" action="takahatashun.github.io" onsubmit="convert();return false;">
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="panel panel-dark">
+                    <div class="panel-heading"><p class="panel-title"><i class="fas fa-sign-in-alt"></i> Input</p></div>
+                    <div class="panel-body">
+                      <div class="row">
+                        <div class="col-10-center">
+                          <textarea name="input" rows="7" class="form-control textarea-vertical"></textarea> 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="panel panel-dark">
+                    <div class="panel-heading"><p class="panel-title"><i class="fas fa-sign-out-alt"></i> Output</p></div>
+                    <div class="panel-body">
+                      <div class="row">
+                        <div class="col-10-center">
+                          <textarea name="output" rows="7" class="form-control textarea-vertical"  readonly="true"></textarea> 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                
+                <div class="col-xs-4 col-4-center">
+                  <div class="input-group mb-3">
+                    <select data-toggle="tooltip" data-placement="top" title="Direction" name="direction" class="form-control">
+                      <option value="U2J">Unicode ⇒ Java Entities</option>
+                      <option value="J2U">Java Entities ⇒ Unicode</option>
+                    </select>
+                    <select data-toggle="tooltip" data-placement="top" title="Convert options" name="type" class="form-control">
+                      <option value="skip">Skip Latin Character</option>
+                      <option value="full">Convert Full</option>
+                    </select>
+                    <input type="submit" class="col-xs-6 btn btn-success" value="Convert">
+                    <input type="reset" class="col-xs-6 btn btn-danger" value="Clear">
+                  </div>
+                </div>
+                  
+              </div>
+            </form>
+          </div>
+          <div class="panel-footer">
+              <ul class="list-inline search">  
+                <p><i class="fab fa-github"></i> Source: <a href="https://github.com/takahatashun/takahatashun.github.io  " target="_blank">Github</a></p>
+                <p><i class="fas fa-search"></i> Search keyword</p>
+                <li>Unicode to JavaString</li>
+                <li>JavaString to Unicode</li>
+                <li>convert Unicode to JavaString</li>
+                <li>convert JavaString to Unicode</li>
+                <li>Unicode to JavaEntity</li>
+                <li>JavaEntity to Unicode</li>
+              </ul>
+              <ul class="list-inline search">
+                <li>java string</li>
+                <li>unicode</li>
+                <li>chuyển đổi từ JavaString sang Unicode</li>
+                <li>chuyển đổi từ Unicode sang JavaString</li>
+                <li>chuyển đổi từ JavaEntity sang Unicode</li>
+                <li>chuyển đổi từ Unicode sang JavaEnity</li>
+              </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-3">
+        <div class="panel panel-dark">
+          <div class="panel-heading">
+            <p class="panel-title"><i class="fas fa-address-card"></i> Contact Author</p>
+          </div>
+          <div class="panel-body">
+            <ul class="list-unstyled">
+              <li><i class="fas fa-user"></i> Author: TakahataShun</li>
+              <li><i class="fab fa-facebook"></i> Facebook: <a href="https://facebook.com/takahatashun.vietnam" target="_blank">Takahata Shun</a></li>
+              <li><i class="fab fa-twitter-square"></i> Twitter: <a href="https://twiter.com/takahatashunvn" target="_blank">@takahatashunvn</a></li>
+              <li><i class="fab fa-discord"></i> Discord: TakahataShun#2324</li>
+            </ul>
+          </div>          
+        </div>
+        <div style="width: 256px; height: 256px; background: url(https://i.imgur.com/KQtnGpG.png) no-repeat; margin-left: auto; margin-right: auto "></div>
+      </div>
+
+    </div>
+  </body>
+</html>
