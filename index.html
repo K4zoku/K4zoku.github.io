@@ -1,117 +1,140 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <link rel="icon" type="image/png" href="https://i.imgur.com/KQtnGpG.png">
-    <title>Unicode ⇔ JavaEntities Converter</title>
-    <meta name="google-site-verification" content="W3Tu3bPyrpKmCgKKxlnt5MgP7BdU5RrZNzvhAJlq1uQ" />
-    <link rel="stylesheet" href="TS.Bootstrap.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="convert.js"></script>
-  </head>
+    <head>
+        <style type="text/css">
+            body * {
+                box-sizing: border-box;
+            }
+            body {
+                overflow: hidden;
+                width: 100%;
+                margin: 0;
+                padding: auto;
+                background-color: #292929;
+            }
+            .wrapper {
+                background-color: #292929;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                padding: 1em;
+            }
 
-  <body>
-    <script>
-      $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();   
-      });
-    </script>
+            svg .path-L {
+                stroke-dashoffset: 501.36639404296875px;
+                stroke-dasharray: 501.36639404296875px;
+                fill: transparent;
+                -webkit-transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0s,
+                                    fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.8s;
+                transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0s,
+                            fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.8s;
+            }
 
-    <div class="row">
-      <div class="col-xs-9">
-        <div id="main" class="panel panel-dark">
-          <div class="panel-heading"><p class="panel-title">Unicode ⇔ JavaEntites Converter</p></div>
-          <div class="panel-body">
-            <form name="conversion" action="takahatashun.github.io" onsubmit="convert();return false;">
-              <div class="row">
-                <div class="col-xs-12">
-                  <div class="panel panel-dark">
-                    <div class="panel-heading"><p class="panel-title"><i class="fas fa-sign-in-alt"></i> Input</p></div>
-                    <div class="panel-body">
-                      <div class="row">
-                        <div class="col-10-center">
-                          <textarea name="input" rows="7" class="form-control textarea-vertical"></textarea> 
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <div class="panel panel-dark">
-                    <div class="panel-heading"><p class="panel-title"><i class="fas fa-sign-out-alt"></i> Output</p></div>
-                    <div class="panel-body">
-                      <div class="row">
-                        <div class="col-10-center">
-                          <textarea name="output" rows="7" class="form-control textarea-vertical"  readonly="true"></textarea> 
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                
-                <div class="col-xs-4 col-4-center">
-                  <div class="input-group mb-3">
-                    <select data-toggle="tooltip" data-placement="top" title="Direction" name="direction" class="form-control">
-                      <option value="U2J">Unicode ⇒ Java Entities</option>
-                      <option value="J2U">Java Entities ⇒ Unicode</option>
-                    </select>
-                    <select data-toggle="tooltip" data-placement="top" title="Convert options" name="type" class="form-control">
-                      <option value="skip">Skip Latin Character</option>
-                      <option value="full">Convert Full</option>
-                    </select>
-                    <input type="submit" class="col-xs-6 btn btn-success" value="Convert">
-                    <input type="reset" class="col-xs-6 btn btn-danger" value="Clear">
-                  </div>
-                </div>
-                  
-              </div>
-            </form>
-          </div>
-          <div class="panel-footer">
-              <ul class="list-inline search">  
-                <p><i class="fab fa-github"></i> Source: <a href="https://github.com/takahatashun/takahatashun.github.io  " target="_blank">Github</a></p>
-                <p><i class="fas fa-search"></i> Search keyword</p>
-                <li>Unicode to JavaString</li>
-                <li>JavaString to Unicode</li>
-                <li>convert Unicode to JavaString</li>
-                <li>convert JavaString to Unicode</li>
-                <li>Unicode to JavaEntity</li>
-                <li>JavaEntity to Unicode</li>
-              </ul>
-              <ul class="list-inline search">
-                <li>java string</li>
-                <li>unicode</li>
-                <li>chuyển đổi từ JavaString sang Unicode</li>
-                <li>chuyển đổi từ Unicode sang JavaString</li>
-                <li>chuyển đổi từ JavaEntity sang Unicode</li>
-                <li>chuyển đổi từ Unicode sang JavaEnity</li>
-              </ul>
-          </div>
+            svg.active .path-L {
+                stroke-dashoffset: 0;
+                fill: rgb(255, 255, 255);
+            }
+
+            svg .path-C {
+                stroke-dashoffset: 595.9501342773438px;
+                stroke-dasharray: 595.9501342773438px;
+                fill: transparent;
+                -webkit-transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.12s,
+                                    fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.9s;
+                transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.12s,
+                            fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.9s;
+            }
+
+            svg.active .path-C {
+                stroke-dashoffset: 0;
+                fill: rgb(255, 255, 255);
+            }
+
+            svg .path-X {
+                stroke-dashoffset: 858.953369140625px;
+                stroke-dasharray: 858.953369140625px;
+                fill: transparent;
+                -webkit-transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.24s,
+                                    fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1s;
+                transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.24s,
+                            fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1s;
+            }
+
+            svg.active .path-X {
+              stroke-dashoffset: 0;
+              fill: rgb(255, 255, 255);
+            }
+        </style>
+    </head>
+    <body onload="onLoadPage();">
+        <div class="wrapper">
+            <svg height="35vh" id="logo" style="enable-background:new" version="1.1" viewBox="0 0 508 285.75" width="35vh" xmlns="http://www.w3.org/2000/svg">
+                <defs id="defs1">
+                    <lineargradient id="maincolor">
+                        <stop id="stop1" offset="0" style="stop-color:#ffb13e;stop-opacity:1;">
+                        </stop>
+                        <stop id="stop2" offset="0.5" style="stop-color:#ffa000;stop-opacity:1">
+                        </stop>
+                        <stop id="stop3" offset="1" style="stop-color:#ffb13e;stop-opacity:1">
+                        </stop>
+                    </lineargradient>
+                    <lineargradient gradientunits="userSpaceOnUse" id="subcolor1" x1="339.36456" x2="626.39484" xlink:href="#maincolor" y1="-227.19333" y2="-227.19333">
+                    </lineargradient>
+                    <lineargradient gradientunits="userSpaceOnUse" id="subcolor2" x1="339.36456" x2="626.39484" xlink:href="#maincolor" y1="-227.19333" y2="-227.19333">
+                    </lineargradient>
+                    <lineargradient gradientunits="userSpaceOnUse" id="subcolor3" x1="339.36456" x2="626.39484" xlink:href="#maincolor" y1="-227.19333" y2="-227.19333">
+                    </lineargradient>
+                    <lineargradient gradientunits="userSpaceOnUse" id="subcolor4" x1="339.36456" x2="626.39484" xlink:href="#maincolor" y1="-227.19333" y2="-227.19333">
+                    </lineargradient>
+                </defs>
+                <metadata id="meta">
+                    <rdf:rdf>
+                        <cc:work rdf:about="">
+                            <dc:format>
+                                image/svg+xml
+                            </dc:format>
+                            <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage">
+                            </dc:type>
+                            <dc:title>
+                            </dc:title>
+                        </cc:work>
+                    </rdf:rdf>
+                </metadata>
+                <g id="main" transform="translate(0,-11.250467)">
+                    <g id="lxc" transform="matrix(1.7609843,0,0,1.7866873,-596.01902,560.0489)">
+                        <path class="path-L" d="m 340.17692,-301.33829 v 4.21842 114.47422 l 25.52089,-25.69443 v -88.77979 -4.21842 z m 25.52089,127.70457 -25.52089,25.69442 h 51.13792 25.61707 l 25.52087,-25.69442 h -51.13794 z" id="path-L" style='stroke: url("#subcolor2"); stroke-width: 1.5; stroke-miterlimit: 4; stroke-opacity: 1;'>
+                        </path>
+                        <path class="path-X" d="m 381.72036,-306.44736 44.15547,56.20879 -60.17802,76.60485 h 32.81277 l 43.46261,-55.86738 v -0.24662 l 16.02259,-20.58564 v -0.24663 l -43.46264,-55.86737 z m 60.25283,76.69964 43.75037,55.99069 h 32.42885 l -59.86861,-76.69938 z m 16.31061,-20.70869 16.31033,20.70897 59.86863,-76.69964 H 502.0339 Z" id="path-X" style='stroke: url("#subcolor4"); stroke-width: 1.5; stroke-miterlimit: 4; stroke-opacity: 1;'>
+                        </path>
+                        <path class="path-C" d="m 541.8674,-159.05807 c 9.21058,4.02672 19.18871,6.13596 29.74251,6.13596 10.5538,0 20.53192,-1.9175 29.74251,-5.94422 l -29.74251,-19.75012 c -7.09983,0 -13.62398,-1.34226 -19.95625,-3.83498 -6.14041,-2.68449 -11.51324,-6.32771 -16.11853,-11.12144 -4.79719,-4.60196 -8.44304,-9.97092 -11.12946,-16.10688 -2.68643,-6.32773 -4.02963,-12.84717 -4.02963,-19.94188 0,-7.09472 1.3432,-13.61416 4.02963,-19.94187 2.68642,-6.13596 6.33227,-11.50494 10.93756,-16.1069 4.60531,-4.79371 9.97813,-8.43694 16.31043,-11.12141 6.14037,-2.49274 12.85642,-3.83497 19.95625,-3.83497 13.81589,0 25.90476,4.7937 36.07478,14.76464 l 18.22929,-17.83264 c -7.09983,-7.09469 -15.35097,-12.65541 -24.56156,-16.68215 -9.21059,-4.02672 -19.18871,-5.9442 -29.74251,-5.9442 -10.5538,0 -20.53193,2.10922 -29.74251,6.13597 -9.40246,4.0267 -17.46173,9.39567 -24.56155,16.49038 -6.90795,6.90297 -12.47268,14.95639 -16.50231,24.16034 -4.02962,9.3957 -6.14039,19.36662 -6.14039,29.91281 0,10.35442 2.11077,20.13362 6.14039,29.5293 4.02963,9.39567 9.59436,17.44914 16.50231,24.54383 7.09982,6.90297 15.15909,12.46368 24.56155,16.49043 z" id="path-C" style='stroke: url("#subcolor3"); stroke-width: 1.5; stroke-miterlimit: 4; stroke-opacity: 1;'>
+                        </path>
+                    </g>
+                </g>
+            </svg>
         </div>
-      </div>
+        <script>
+            function onLoadPage(){
+                scheduleDraw();
+            }
 
-      <div class="col-xs-3">
-        <div class="panel panel-dark">
-          <div class="panel-heading">
-            <p class="panel-title"><i class="fas fa-address-card"></i> Contact Author</p>
-          </div>
-          <div class="panel-body">
-            <ul class="list-unstyled">
-              <li><i class="fas fa-user"></i> Author: TakahataShun</li>
-              <li><i class="fab fa-facebook"></i> Facebook: <a href="https://facebook.com/100022162512692" target="_blank">Takahata Shun</a></li>
-              <li><i class="fab fa-twitter-square"></i> Twitter: <a href="https://twiter.com/takahatashunvn" target="_blank">@takahatashunvn</a></li>
-              <li><i class="fab fa-discord"></i> Discord: TakahataShun#2324</li>
-            </ul>
-          </div>          
-        </div>
-        <div style="width: 256px; height: 256px; background: url(https://i.imgur.com/KQtnGpG.png) no-repeat; margin-left: auto; margin-right: auto "></div>
-      </div>
+            function scheduleErase(){
+                erase();
+                var d = setTimeout(scheduleDraw, 6000);
+            }
 
-    </div>
-  </body>
+            function scheduleDraw(){
+                draw();
+                var e = setTimeout(scheduleErase, 6000);
+            }
+
+            function draw(){
+                document.getElementById('logo').classList.add('active');
+            }
+
+            function erase(){
+                document.getElementById('logo').classList.remove('active');
+            }
+        </script>
+    </body>
 </html>
